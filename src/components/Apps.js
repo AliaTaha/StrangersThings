@@ -1,6 +1,7 @@
 
 import React, {useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
+import { fetchPosts } from '../api';
 
 
 import './bootstrap.css';
@@ -28,7 +29,8 @@ const App = () => {
         </h1>
         {
             posts.map(post => <div key={post.id}>
-                {post.title}
+                <h3>{post.title}</h3>
+                <di>{post.body}</di>
             </div>)
         }
     
