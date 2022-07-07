@@ -1,11 +1,11 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import { 
-  Main,
-  Posts, 
-} from './components';
+//import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import {Main, Header, UserPosts} from './components';
+
+import {getUsers, getPostsByUser} from './api';
 
 const container = document.getElementById('app');
 const root = ReactDOM.createRoot(container);

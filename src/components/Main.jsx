@@ -1,7 +1,9 @@
 import React, {useState} from 'react'
+//import { BrowserRouter as Router, Route } from "react-router-dom";
+//import { fetchPosts } from '../api';
 
 
-function Main(){
+function Main() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
