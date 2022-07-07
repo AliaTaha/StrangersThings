@@ -1,8 +1,13 @@
 
 import React from 'react'
+import {fetchPosts}from '../api'
 
 const App = () => {
-    return(<h1>APP Components</h1>)
-}
+    const [posts, setPosts] = useState([]);
 
+    useEffect(() => {
+        fetchPosts()
+        
+    })
+}
 export default App
