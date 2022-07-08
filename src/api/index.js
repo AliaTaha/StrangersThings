@@ -1,28 +1,53 @@
+// Feature and export all calls to API
+
+const BASE_URL = 'https://strangers-things.herokuapp.com/api/';
+const COHORT_NAME = '2206-FTB-WEB-FT';
+const API_URL = BASE_URL + COHORT_NAME;
 
 
+// GET request via fetch call to /api/posts 
 
-export const BASE_URL = 'https://strangers-things.herokuapp.com/api/';
-export const COHORT_NAME = '2206-FTB-WEB-FT';
-export const API_URL = BASE_URL + COHORT_NAME;
+export const getAllPosts = async () => {
+    const response = await fetch(`${API_URL}/posts`)
+    const result = await response.json()
+    const data = result.data.posts 
+    return data 
+}
 
+// POST request via fetch using async/await
+// request parameters: user(object, required)
+// return parameters: token (string)
+// json web token authenticates user future calls 
 
-//GET request using fetch with async/await
-
-export const fetchPosts = async () => {
-    const respond = await fetch(`${API_URL}/posts`);
-    const data = await respond.json();
-    console.log('data:', data);
-    setPosts(postData);
-
-    useEffect(() => {
-        fetchPosts()
-      }, []);
+export const userLogin = async (username, password) => {
+  const response = await fetch(`${API_URL}/users/login`,
+      {
+          method: "POST",
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              user: {
+                  username: username,
+                  password: password
+          }})
+  }
+  )
+  const result = await response.json()
+  const token = result.data.token
+  return token
 }
 
 
-
-
-
-//fetchPosts();
-
-
+export const getProfile = async(token) => {
+  const response = await fetch(`${API_URL}/users/me`,
+      {
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+      }
+      })
+  const result = await response.json()
+  const data = result.data
+  return data
+}

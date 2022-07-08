@@ -1,9 +1,14 @@
+
 import React from 'react'
 
-function Register() {
-  return (
-    <div>Register</div>
-  )
-}
 
-export default Register
+const Register = (props) => {
+
+    return (
+        
+        <div className='box'>{`This is your Register Component`} 
+        </div>
+
+)}
+
+export default Register;
