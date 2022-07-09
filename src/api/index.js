@@ -1,53 +1,65 @@
 // Feature and export all calls to API
 
-const BASE_URL = 'https://strangers-things.herokuapp.com/api/';
-const COHORT_NAME = '2206-FTB-WEB-FT';
+const BASE_URL = "https://strangers-things.herokuapp.com/api/";
+const COHORT_NAME = "2206-FTB-WEB-FT";
 const API_URL = BASE_URL + COHORT_NAME;
 
-
-// GET request via fetch call to /api/posts 
+// GET request via fetch call to /api/posts
 
 export const getAllPosts = async () => {
-    const response = await fetch(`${API_URL}/posts`)
-    const result = await response.json()
-    const data = result.data.posts 
-    return data 
-}
+  const response = await fetch(`${API_URL}/posts`);
+  const result = await response.json();
+  const data = result.data.posts;
+  return data;
+};
+
+export const newPost = async (token, post) => {
+  const response = await fetch(`${API_URL + COHORT}/posts`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      post: post,
+    }),
+  });
+  const result = await response.json();
+  const newPost = result.data.post;
+  return newPost;
+};
 
 // POST request via fetch using async/await
 // request parameters: user(object, required)
 // return parameters: token (string)
-// json web token authenticates user future calls 
+// json web token authenticates user future calls
 
 export const userLogin = async (username, password) => {
-  const response = await fetch(`${API_URL}/users/login`,
-      {
-          method: "POST",
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-              user: {
-                  username: username,
-                  password: password
-          }})
-  }
-  )
-  const result = await response.json()
-  const token = result.data.token
-  return token
-}
+  const response = await fetch(`${API_URL}/users/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      user: {
+        username: username,
+        password: password,
+      },
+    }),
+  });
+  const result = await response.json();
+  const token = result.data.token;
+  return token;
+};
 
-
-export const getProfile = async(token) => {
-  const response = await fetch(`${API_URL}/users/me`,
-      {
-          headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token}`
-      }
-      })
-  const result = await response.json()
-  const data = result.data
-  return data
-}
+export const getProfile = async (token) => {
+  const response = await fetch(`${API_URL}/users/me`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const result = await response.json();
+  const data = result.data;
+  return data;
+};

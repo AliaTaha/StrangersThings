@@ -1,22 +1,17 @@
 
 import React from 'react'
 import { Routes, Route, Link} from "react-router-dom"
-import { NavBar, Login, Home, Posts  } from './'
+import { NavBar, Home, Posts, NewPost, ModPost } from './'
 
 
 
 const Main = () => {
   return (
       <div id='container'>
-        <div id='navbar'>
-          <Link to="/welcomePage">Home</Link>
-          <Link to="/login">Login</Link>
-          <Link to="/posts">Posts</Link>
-        </div>
+        <NavBar />
         <div id='main-section'>
         <Routes>
           <Route path="/welcomePage" element={<Home/>} />
-          <Route path="/login" element={<Login/>} />
           <Route path="/posts" element={<Posts/>} />
         </Routes>
       </div>
@@ -30,11 +25,14 @@ const Main = () => {
 export default Main;
 
 
-
+//<Route path="/login" element={<Login/>} />
 
 /**const App = () => {
 //  const [messageFlag, setMessageFlag] = useState(false)
 //  const [singlePost, setSinglePost] = useState({})
+
+const [errorMessage, setErrorMessage] = useState({});
+const []
     
 return (
 
