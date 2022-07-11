@@ -80,7 +80,6 @@ export const registerUser = async (username, password) => {
   });
   const result = await response.json();
   const token = result.data.token;
-  localStorage.setItem("token", token);
   console.log(token, "THIS IS YOUR TOKEN")
   return token;
   

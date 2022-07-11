@@ -22,7 +22,7 @@ const Login = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const token = userLogin(username, password);
+    const token = await userLogin(username, password);
     localStorage.setItem("token", token);
     console.log(userLogin);
   };

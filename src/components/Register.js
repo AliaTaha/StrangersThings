@@ -9,7 +9,8 @@ const Register = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const token =   registerUser(username, password);
+    const token = await registerUser(username, password);
+    localStorage.setItem("token", token);
     console.log(token, "this is the register component");
 
 }
