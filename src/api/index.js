@@ -63,3 +63,25 @@ export const getProfile = async (token) => {
   const data = result.data;
   return data;
 };
+
+
+export const registerUser = async (username, password) => {
+  const response = await fetch(`${API_URL}/users/register`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      user: {
+        username: username,
+        password: password,
+      },
+    }),
+  });
+  const result = await response.json();
+  const token = result.data.token;
+  localStorage.setItem("token", token);
+  console.log(token, "THIS IS YOUR TOKEN")
+  return token;
+  
+};

@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { Routes, Route, Link} from "react-router-dom"
-import { NavBar, Home, Posts, NewPost, ModPost } from './'
+import { NavBar, Home, Posts, NewPost, ModPost ,Login,Register,Profile} from './'
 
 
 
@@ -10,10 +10,15 @@ const Main = () => {
       <div id='container'>
         <NavBar />
         <div id='main-section'>
-        <Routes>
-          <Route path="/welcomePage" element={<Home/>} />
-          <Route path="/posts" element={<Posts/>} />
-        </Routes>
+        
+          <Routes>
+            <Route path="/homePage" element={<Home />} />
+            <Route path="/posts" element={<Posts />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+        
       </div>
       </div>
 

@@ -1,32 +1,25 @@
+import React, { useState } from 'react'
+import {registerUser} from '../api'
 
-import React from 'react'
-
-
-const Register = (props) => {
-
-    return (
-        
-        <div className='box'>{`This is your Register Component`} 
-        </div>
-
-)}
-
-//export default Register;
+const Register = () => {
 
 
-const handleSubmit = async (event) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const token = userLogin(username, password);
-    localStorage.setItem("token", token);
-    console.log(userLogin);
-  };
+    const token =   registerUser(username, password);
+    console.log(token, "this is the register component");
+
+}
 
   return (
     <div className="box" id="loginBox">
-      <h3>LOGIN</h3>
+      <h3>REGISTER</h3>
       <form onSubmit={handleSubmit}>
         <label className="username">
-          UserName
+          UserName: {}
           <input
             name="username"
             type="text"
@@ -38,19 +31,20 @@ const handleSubmit = async (event) => {
         </label>
 
         <label className="password">
-          Password
+          Password: {}
           <input
             name="password"
             type="text"
             value={password}
             onChange={(event) => {
               setPassword(event.target.value);
-              console.log(password);
             }}
           />
         </label>
-        <button type="submit">Submit</button>
+        <button type="submit">Register</button>
       </form>
     </div>
   );
 };
+
+export default Register;

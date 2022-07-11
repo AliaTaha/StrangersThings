@@ -61,4 +61,4 @@ const Login = () => {
   );
 };
 
-console.log();
+export default Login
