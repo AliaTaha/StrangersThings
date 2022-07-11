@@ -1,7 +1,7 @@
 // Feature and export all calls to API
 
 const BASE_URL = "https://strangers-things.herokuapp.com/api/";
-const COHORT_NAME = "2206-FTB-WEB-FT";
+const COHORT_NAME = "2206-FTB-ET-WEB-FT";
 const API_URL = BASE_URL + COHORT_NAME;
 
 // GET request via fetch call to /api/posts
@@ -14,7 +14,7 @@ export const getAllPosts = async () => {
 };
 
 export const newPost = async (token, post) => {
-  const response = await fetch(`${API_URL + COHORT}/posts`, {
+  const response = await fetch(`${API_URL}/posts`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -64,7 +64,6 @@ export const getProfile = async (token) => {
   return data;
 };
 
-
 export const registerUser = async (username, password) => {
   const response = await fetch(`${API_URL}/users/register`, {
     method: "POST",
@@ -80,7 +79,34 @@ export const registerUser = async (username, password) => {
   });
   const result = await response.json();
   const token = result.data.token;
-  console.log(token, "THIS IS YOUR TOKEN")
+  console.log(token, "THIS IS YOUR TOKEN");
   return token;
-  
 };
+
+/**export const postMessage = async (token, postID, payload) => {
+  const response = await fetch(
+    `${API_URL + COHORT}/posts/${postID}/messages`,
+
+    {
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json",
+
+        Authorization: `Bearer ${token}`,
+      },
+
+      body: JSON.stringify({
+        message: {
+          content: `${payload}`,
+        },
+      }),
+    }
+  );
+
+  const result = await response.json();
+
+  console.log(result, "posted message after API");
+
+  return result;
+};*/

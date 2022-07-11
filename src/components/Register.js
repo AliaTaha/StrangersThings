@@ -1,9 +1,7 @@
-import React, { useState } from 'react'
-import {registerUser} from '../api'
+import React, { useState } from "react";
+import { registerUser } from "../api";
 
 const Register = () => {
-
-
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -12,8 +10,7 @@ const Register = () => {
     const token = await registerUser(username, password);
     localStorage.setItem("token", token);
     console.log(token, "this is the register component");
-
-}
+  };
 
   return (
     <div className="box" id="loginBox">

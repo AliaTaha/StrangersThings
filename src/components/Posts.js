@@ -29,10 +29,10 @@ const Posts = (props) => {
   }, []);
 
   const displayPosts = allPosts.length ? (
-    <ol className="box all-posts">
+    <ol className="boxAll">
       {allPosts.map((post) => {
         return (
-          <li className="box" key={`all-posts-${post._id}`}>
+          <li className="box" key={`boxAllPosts-${post._id}`}>
             {post.title}
 
             <button id={`${post._id}`} onClick={handleMessage}>
@@ -47,8 +47,8 @@ const Posts = (props) => {
   );
 
   return (
-    <div className="box all-posts">
-      {`This is your Posts Component`}
+    <div className="boxAllPosts">
+      {`This is our Posts Component`}
 
       {newPostFlag ? (
         <NewPost

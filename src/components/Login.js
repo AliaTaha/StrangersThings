@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { userLogin } from "../api";
+import { Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   // Initial State(s)
@@ -30,6 +32,7 @@ const Login = () => {
   return (
     <div className="box" id="loginBox">
       <h3>LOGIN</h3>
+      <outlet />
       <form onSubmit={handleSubmit}>
         <label className="username">
           UserName
@@ -56,9 +59,13 @@ const Login = () => {
           />
         </label>
         <button type="submit">Submit</button>
+        <div>
+          <Link to="/login/register">Don't have an account? Sign Up</Link>
+        </div>
+        <Outlet />
       </form>
     </div>
   );
 };
 
-export default Login
+export default Login;
