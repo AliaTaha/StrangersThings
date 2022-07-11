@@ -4,13 +4,13 @@ import { newPost } from "../api";
 const NewPost = (props) => {
   const { setNewPostFlag, allPosts, setAllPosts } = props;
   const [title, setTitle] = useState("");
-  const [description, setDescripton] = useState("");
+  const [description, setDescription] = useState("");
   const [price, setPrice] = useState("free");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token", token);
 
     console.log(token, "in new post");
 
