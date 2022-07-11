@@ -12,6 +12,7 @@
   "author": "Alia Taha and Brandon Covarrubias",
   "license": "ISC",
   "dependencies": {
+    "@userfront/core": "^0.4.4",
     "axios": "^0.27.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

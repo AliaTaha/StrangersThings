@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import { userLogin } from "../api";
 import { Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Userfront from "@userfront/core";
+
 
 const Login = () => {
+  Userfront.init(token);
+  
   // Initial State(s)
   // needing to be shared between immediate children
   //errorMessages: Store an object with an error message and the name of the field.
@@ -16,6 +21,7 @@ const Login = () => {
 
   // offer a form to be able to login and button to logout
   // handleChange() function sets new state for input
+  const navigation = useNavigate();
 
   const renderErrorMessages = (name) =>
     name === errorMessages.name && (
@@ -27,6 +33,7 @@ const Login = () => {
     const token = await userLogin(username, password);
     localStorage.setItem("token", token);
     console.log(userLogin);
+    navigation("./Posts", { replace: true });
   };
 
   return (
@@ -58,7 +65,8 @@ const Login = () => {
             }}
           />
         </label>
-        <button type="submit">Submit</button>
+        <button type="submit">Submit</button> 
+        <button onChange={Userfront.logout()} type="submit">LogOut</button> 
         <div>
           <Link to="/login/register">Don't have an account? Sign Up</Link>
         </div>
