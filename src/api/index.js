@@ -35,24 +35,27 @@ export const newPost = async (token, post) => {
 // json web token authenticates user future calls
 
 export const userLogin = async (username, password) => {
-  const response = await fetch(`${API_URL}/users/login`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      user: {
-        username: username,
-        password: password,
+  try {
+    const response = await fetch(`${API_URL}/users/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-    }),
-  });
-  const result = await response.json();
-  const token = result.data.token;
-  return token;
+      body: JSON.stringify({
+        user: {
+          username: username,
+          password: password,
+        },
+      }),
+    });
+    const result = await response.json();
+    const token = result.data.token;
+    console.log(token, "THIS IS YOUR TOKEN");
+    return token;
+  } catch (error) {
+    console.log(error);
+  }
 };
-
-
 
 export const getProfile = async (token) => {
   const response = await fetch(`${API_URL}/users/me`, {
