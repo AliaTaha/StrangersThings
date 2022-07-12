@@ -7,3 +7,5 @@ export { default as Posts } from "./Posts";
 export { default as Home } from "./Home";
 export { default as NewPost } from "./NewPost";
 export { default as ModPost } from "./ModPost";
+export { default as Header } from "./Header";
+//export { default as Logout } from "./Logout";

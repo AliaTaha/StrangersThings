@@ -1,29 +1,27 @@
 
 import React from 'react'
 import { Routes, Route, Link} from "react-router-dom"
-import { NavBar, Home, Posts, NewPost, ModPost ,Login,Register,Profile} from './'
+import { NavBar, Home, Posts, NewPost, ModPost ,Login,Register,Profile, Logout } from './'
 
 
 
 const Main = () => {
   return (
-      <div id='container'>
+      <div className='container'>
         <NavBar />
         <div id='main-section'>
-        
           <Routes>
-            <Route path="/homePage" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+                <Route path="/home/posts" element={<Posts />} />
             <Route path="/posts" element={<Posts />} />
             <Route path="/login" element={<Login />} />
                 <Route path="/login/register" element={<Register />} />
-                <Route path="/login/posts" element={<Posts />} />
+                <Route path="/login/home" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
           </Routes>
         
       </div>
       </div>
-
-
   )
 }
 

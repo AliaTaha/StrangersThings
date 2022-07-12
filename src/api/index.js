@@ -52,6 +52,15 @@ export const userLogin = async (username, password) => {
   return token;
 };
 
+export const handleSubmit = async (username, password) => {
+  e.preventDefault();
+  // send the username and password to the server
+  const response = await fetch(`${API_URL}/users/login`);
+  const result = await response.json();
+  const data = result.data.posts;
+  return data;
+};
+
 export const getProfile = async (token) => {
   const response = await fetch(`${API_URL}/users/me`, {
     headers: {

@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import { userLogin } from "../api";
 import { Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import Userfront from "@userfront/core";
-
+//import { useNavigate } from "react-router-dom";
+//import Userfront from "@userfront/core";
 
 const Login = () => {
-  Userfront.init(token);
-  
+  //  Userfront.init(token);
+
   // Initial State(s)
   // needing to be shared between immediate children
   //errorMessages: Store an object with an error message and the name of the field.
@@ -18,12 +17,13 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [user, setUser] = useState();
 
   // offer a form to be able to login and button to logout
   // handleChange() function sets new state for input
-  const navigation = useNavigate();
+  //  const navigation = useNavigate();
 
-  const renderErrorMessages = (name) =>
+  /** const renderErrorMessages = (name) =>
     name === errorMessages.name && (
       <div className="error">{errorMessages.message}</div>
     );
@@ -33,7 +33,7 @@ const Login = () => {
     const token = await userLogin(username, password);
     localStorage.setItem("token", token);
     console.log(userLogin);
-    navigation("./Posts", { replace: true });
+    //    navigation("./Posts", { replace: true });
   };
 
   return (
@@ -65,15 +65,60 @@ const Login = () => {
             }}
           />
         </label>
-        <button type="submit">Submit</button> 
-        <button onChange={Userfront.logout()} type="submit">LogOut</button> 
+        <button type="submit">Login</button>
         <div>
-          <Link to="/login/register">Don't have an account? Sign Up</Link>
+          <Link to="/login/register">Create Account</Link>
         </div>
         <Outlet />
       </form>
     </div>
   );
 };
+*/
+
+  const handleSubmit = async (username, password) => {
+    const user = await userLogin(username, password);
+    setUser(response.data);
+    localStorage.setItem("user", response.data);
+    console.log(user);
+  };
+
+  // if there's a user show the message below
+  if (user) {
+    return <div>{user.name} is loggged in</div>;
+  }
+
+  // if there's no user, show the login form
+  return (
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="username">Username: </label>
+      <input
+        type="text"
+        value={username}
+        placeholder="enter a username"
+        onChange={({ target }) => setUsername(target.value)}
+      />
+      <div>
+        <label htmlFor="password">Password: </label>
+        <input
+          type="password"
+          value={password}
+          placeholder="enter a password"
+          onChange={({ target }) => setPassword(target.value)}
+        />
+      </div>
+      <button type="submit">Login</button>
+    </form>
+  );
+};
 
 export default Login;
+
+//<button onChange={Userfront.logout()} type="submit">
+//          LogOut
+//        </button>
+
+//<div className="logout" id="logoutBox">
+//<h3>You are logged in</h3>
+//<button onClick={logout}>Logout</button>
+//</div>
