@@ -8,25 +8,24 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState("");
+  const [user, setUser] = useState("");
   {
     /*const [token, setToken] = [token,setToken];*/
   }
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (event) => {
     try {
-      const handleSubmit = async (username, password) => {
+        event.preventDefault()
         const token = await userLogin(username, password);
-        setUser(token);
-        localStorage.setItem("user", token);
+        localStorage.setItem("token", token);
         console.log(token);
-      };
-    } catch (error) {}
-    const token = userLogin(username, password);
-    localStorage.setItem("token", token);
-    console.log(handleSubmit);
-  };
+      }
+     catch (error) {
+       console.log(error)
+    }
+  }
   return localStorage.getItem("token") ? (
-    <div>{user} is logged in</div>
+    <div>{`${username}`} is logged in</div>
   ) : (
     <form onSubmit={handleSubmit}>
       <label htmlFor="username">Username: </label>

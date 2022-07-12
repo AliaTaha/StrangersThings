@@ -19,24 +19,20 @@ const Register = () => {
         <label className="username">
           UserName: {}
           <input
-            name="username"
             type="text"
             value={username}
-            onChange={(handleOnChange) => {
-              setUsername(handleOnChange.target.value);
-            }}
+            placeholder="enter a username"
+            onChange={({ target }) => setUsername(target.value)}
           />
         </label>
 
-        <label className="password">
+        <label className="password" >
           Password: {}
           <input
-            name="password"
-            type="text"
+            type="password"
             value={password}
-            onChange={(event) => {
-              setPassword(event.target.value);
-            }}
+            placeholder="enter a password"
+            onChange={({ target }) => setPassword(target.value)}
           />
         </label>
         <button type="submit">Register</button>
