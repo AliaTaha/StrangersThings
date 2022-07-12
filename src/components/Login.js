@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { userLogin } from "../api";
 import { Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -18,6 +18,7 @@ const Login = () => {
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [user, setUser] = useState();
+  const [loggedInUser, setLoggedInUser] = useState("");
 
   // offer a form to be able to login and button to logout
   // handleChange() function sets new state for input
@@ -78,8 +79,8 @@ const Login = () => {
 
   const handleSubmit = async (username, password) => {
     const user = await userLogin(username, password);
-    setUser(response.data);
-    localStorage.setItem("user", response.data);
+    setUser(response.data.token);
+    localStorage.setItem("user", response.data.token);
     console.log(user);
   };
 
@@ -111,6 +112,22 @@ const Login = () => {
     </form>
   );
 };
+
+/**useEffect(() => {
+  const loggedInUser = localStorage.getItem("user");
+  if (loggedInUser) {
+    const foundUser = JSON.parse(loggedInUser);
+    setUser(foundUser);
+  }
+}, []);
+
+const handleLogout = () => {
+  setUser();
+  setUsername("");
+  setPassword("");
+  localStorage.clear();
+};
+*/
 
 export default Login;
 

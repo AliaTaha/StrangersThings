@@ -10,7 +10,7 @@ const NavBar = () => {
       <div className="page-titles" id="pageTitles">
         <Link to="/home">Home</Link>
         <Link to="/posts">Posts</Link>
-        <Link to="/login">Login</Link>
+        <Link to="/">Login</Link>
         <Link to="/profile">Profile</Link>
       </div>
     </div>
