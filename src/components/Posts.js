@@ -29,19 +29,26 @@ const Posts = (props) => {
   }, []);
 
   const displayPosts = allPosts.length ? (
-    <ol className="boxAll">
-      {allPosts.map((post) => {
+    <div className="boxAll">
+      {allPosts.map((element) => {
         return (
-          <li className="box" key={`boxAllPosts-${post._id}`}>
-            {post.title}
-
-            <button id={`${post._id}`} onClick={handleMessage}>
+          <div className="box" key={element._id}>
+            <h2 className="postTitle">{element.title}</h2>
+            <p className="postUsername">{element.author.username}</p>
+            <p className="postsDecription">{element.desription}</p>
+            <p className="postsPrice">{element.price}</p>
+            <p className="postWillDeliver">
+              Will Deliver: {element.willDeliver ? "Yes" : "No"}
+            </p>
+            <button id={`${element._id}`} onClick={handleMessage}>
+              {" "}
+              {console.log(element, "this is the post")}
               Message Owner
             </button>
-          </li>
+          </div>
         );
       })}
-    </ol>
+    </div>
   ) : (
     <div>Loading Posts...</div>
   );

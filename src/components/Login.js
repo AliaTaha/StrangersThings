@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 //import { useNavigate } from "react-router-dom";
 //import Userfront from "@userfront/core";
 
-const Login = () => {
+const Login = (props) => {
   //  Userfront.init(token);
 
   // Initial State(s)
   // needing to be shared between immediate children
   //errorMessages: Store an object with an error message and the name of the field.
   //isSubmitted: boolean value to indicate if the form is successfully submitted or not.
-
+  const [token, setToken] = [props.token, props.setToken];
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessages, setErrorMessages] = useState({});
@@ -20,6 +20,7 @@ const Login = () => {
   const [user, setUser] = useState();
   const [loggedInUser, setLoggedInUser] = useState("");
 
+  return handleLogout();
   // offer a form to be able to login and button to logout
   // handleChange() function sets new state for input
   //  const navigation = useNavigate();
@@ -109,27 +110,36 @@ const Login = () => {
         />
       </div>
       <button type="submit">Login</button>
+      <div>
+        <Link to="/login/register">Create Account</Link>
+      </div>
     </form>
   );
 };
 
-/**useEffect(() => {
-  const loggedInUser = localStorage.getItem("user");
-  if (loggedInUser) {
-    const foundUser = JSON.parse(loggedInUser);
-    setUser(foundUser);
-  }
-}, []);
+// useEffect(() => {
 
-const handleLogout = () => {
-  setUser();
-  setUsername("");
-  setPassword("");
-  localStorage.clear();
-};
-*/
+//   }
+// }, []);
 
-export default Login;
+function handleLogout() {
+  return (
+    <div>
+      <button
+        onClick={() => {
+          localStorage.removeItem("token");
+        }}
+      >
+        Logout
+      </button>
+    </div>
+  );
+}
+//   setUser();
+//   setUsername("");
+//   setPassword("");
+//   localStorage.clear();
+// };
 
 //<button onChange={Userfront.logout()} type="submit">
 //          LogOut
@@ -139,3 +149,5 @@ export default Login;
 //<h3>You are logged in</h3>
 //<button onClick={logout}>Logout</button>
 //</div>
+
+export default Login;

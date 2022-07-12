@@ -1,33 +1,45 @@
-
-import React from 'react'
-import { Routes, Route, Link} from "react-router-dom"
-import { NavBar, Home, Posts, NewPost, ModPost ,Login,Register,Profile, Logout } from './'
-
-
+import React, { useState } from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import {
+  NavBar,
+  Home,
+  Posts,
+  NewPost,
+  ModPost,
+  Login,
+  Register,
+  Profile,
+  Logout,
+} from "./";
 
 const Main = () => {
+  const [token, setToken] = useState("");
   return (
-      <div className='container'>
-        <NavBar />
-        <div id='main-section'>
-          <Routes>
-            <Route path="/home" element={<Home />} />
-                <Route path="/home/posts" element={<Posts />} />
-            <Route path="/posts" element={<Posts />} />
-            <Route path="/" element={<Login />} />
-                <Route path="/login/register" element={<Register />} />
-                <Route path="/login/home" element={<Home />} />
-            <Route path="/profile" element={<Profile />} />
-          </Routes>
-        
+    <div className="container">
+      <NavBar />
+      <div id="main-section">
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/home/posts" element={<Posts />} />
+          <Route path="/posts" element={<Posts />} />
+          <Route
+            exact
+            path="/"
+            element={<Login token={token} setToken={setToken} />}
+          />
+          <Route
+            path="/login/register"
+            element={<Register token={token} setToken={setToken} />}
+          />
+          <Route path="/login/home" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
       </div>
-      </div>
-  )
-}
-
+    </div>
+  );
+};
 
 export default Main;
-
 
 //<Route path="/login" element={<Login/>} />
 
@@ -59,30 +71,9 @@ export default App;
 
 */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //const [userList, setUserList] = useState([]);
-    //const [currentUser, setCurrentUser] = useState(null);
-    //const [userPosts, setUserPosts] = useState([]);
+//const [userList, setUserList] = useState([]);
+//const [currentUser, setCurrentUser] = useState(null);
+//const [userPosts, setUserPosts] = useState([]);
 
 /**   useEffect(() => {
         const fetchPosts = async () => {
@@ -114,4 +105,3 @@ ReactDOM.render(
     document.getElementById('root')
   );
 */
-
