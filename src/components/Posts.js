@@ -11,7 +11,7 @@ const Posts = (props) => {
   const handleMessage = (event) => {
     event.preventDefault();
     const singledOutPost = allPosts.filter(
-      (element) => element._id == event.target.id
+      element => element._id == event.target.id
     );
     setSinglePost(singledOutPost[0]);
     setMessageFlag(true);
@@ -35,13 +35,12 @@ const Posts = (props) => {
           <div className="box" key={element._id}>
             <h2 className="postTitle">{element.title}</h2>
             <p className="postUsername">{element.author.username}</p>
-            <p className="postsDecription">{element.desription}</p>
+            <p className="postsDescription">{element.description}</p>
             <p className="postsPrice">{element.price}</p>
             <p className="postWillDeliver">
               Will Deliver: {element.willDeliver ? "Yes" : "No"}
             </p>
             <button id={`${element._id}`} onClick={handleMessage}>
-              {" "}
               {console.log(element, "this is the post")}
               Message Owner
             </button>
