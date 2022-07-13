@@ -1,0 +1,24 @@
+* {
+    border: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+
+
+
+body {
+ background-color: bisque;
+ height: 100vh;
+ display: flex;
+
+}
+
+.navBar {
+    height: 100vh;
+    display: flex;
+}
+
+.sitetitle {
+  justify-content: center;
+}

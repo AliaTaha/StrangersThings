@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import './styles.css'
 
 const NavBar = () => {
   return (
     <div className="navBox" id="navBar">
-      <div className="site-title">
+      <div className="site-title" id="site-title">
         <h1 id="siteTitle">Strangers' Things</h1>
       </div>
       <div className="page-titles" id="pageTitles">

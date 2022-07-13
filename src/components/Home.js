@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { userLogin } from "../api";
 import { Link } from "react-router-dom";
 import handleLogout from "./LogOut";
+import './styles.css'
 
 const Home = () => {
   const [username, setUsername] = useState("");
