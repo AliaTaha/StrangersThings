@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { getProfile } from "../api";
 
 const Profile = (props) => {
@@ -39,11 +39,7 @@ const Profile = (props) => {
     <div>Loading Messages...</div>
   );
 
-  return (
-    <div className="box">
-      {myMessages}
-    </div>
-  );
+  return <div className="box">{myMessages}</div>;
 };
 
 export default Profile;

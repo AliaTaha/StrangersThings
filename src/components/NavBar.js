@@ -17,6 +17,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-
-//<Link to="/posts">Posts</Link>
-//<Link to="/profile">Profile</Link>

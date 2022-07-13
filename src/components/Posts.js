@@ -4,14 +4,13 @@ import { getAllPosts } from "../api";
 
 const Posts = (props) => {
   const [newPostFlag, setNewPostFlag] = useState(false);
-  const [modPostFlag, setModFlag] = useState(false);
   const { setSinglePost, setMessageFlag } = props;
   const [allPosts, setAllPosts] = useState([]);
 
   const handleMessage = (event) => {
     event.preventDefault();
     const singledOutPost = allPosts.filter(
-      element => element._id == event.target.id
+      (element) => element._id == event.target.id
     );
     setSinglePost(singledOutPost[0]);
     setMessageFlag(true);
@@ -54,8 +53,6 @@ const Posts = (props) => {
 
   return (
     <div className="boxAllPosts">
-      
-
       {newPostFlag ? (
         <NewPost
           setNewPostFlag={setNewPostFlag}

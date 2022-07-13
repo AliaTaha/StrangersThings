@@ -11,30 +11,28 @@ const NewPost = (props) => {
     try {
       event.preventDefault();
 
-      const token = localStorage.getItem("token",token);
-  
+      const token = localStorage.getItem("token", token);
+
       console.log(token, "in new post");
-  
+
       const newPost = {
         title: title,
-  
+
         description: description,
-  
+
         price: price,
       };
-  
+
       console.log(newPost, "new post in new post");
-  
+
       const freshPost = await newPost(token, newPost);
-  
+
       setAllPosts([...allPosts, freshPost]);
-  
+
       setNewPostFlag(false);
-      
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-   
   };
 
   return (
