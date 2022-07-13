@@ -1,18 +1,19 @@
 import React, { useState } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, } from "react-router-dom";
 import {
   NavBar,
   Home,
   Posts,
   NewPost,
   ModPost,
-  Login,
+  // Login,
   Register,
   Profile,
   Logout,
 } from "./";
 
 const Main = () => {
+  
   const [token, setToken] = useState("");
   return (
     <div className="container">
@@ -25,13 +26,13 @@ const Main = () => {
           <Route
             exact
             path="/"
-            element={<Login token={token} setToken={setToken} />}
+            element={<home token={token} setToken={setToken} />}
           />
           <Route
-            path="/login/register"
+            path="/home/register"
             element={<Register token={token} setToken={setToken} />}
           />
-          <Route path="/login/home" element={<Home />} />
+          {/* <Route path="/login/home" element={<Home />} /> */}
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
