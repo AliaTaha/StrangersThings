@@ -17,8 +17,8 @@ export const newPost = async (token, post) => {
   const response = await fetch(`${API_URL}/posts`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      'Content-Type': "application/json",
+      'Authorization': `Bearer ${token}`,
     },
     body: JSON.stringify({
       post: post,
@@ -87,31 +87,3 @@ export const registerUser = async (username, password) => {
   console.log(token, "THIS IS YOUR TOKEN");
   return token;
 };
-
-/**export const postMessage = async (token, postID, payload) => {
-  const response = await fetch(
-    `${API_URL + COHORT}/posts/${postID}/messages`,
-
-    {
-      method: "POST",
-
-      headers: {
-        "Content-Type": "application/json",
-
-        Authorization: `Bearer ${token}`,
-      },
-
-      body: JSON.stringify({
-        message: {
-          content: `${payload}`,
-        },
-      }),
-    }
-  );
-
-  const result = await response.json();
-
-  console.log(result, "posted message after API");
-
-  return result;
-};*/

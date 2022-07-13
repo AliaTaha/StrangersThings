@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
 
 function handleLogout() {
     return (
+        
+        localStorage.removeItem("token")  
 
-            localStorage.removeItem("token")  
-
-    );
+    )
   }
 
-  export default handleLogout
+  export default handleLogout;

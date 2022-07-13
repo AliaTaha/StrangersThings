@@ -54,7 +54,7 @@ const Posts = (props) => {
 
   return (
     <div className="boxAllPosts">
-      {`This is our Posts Component`}
+      
 
       {newPostFlag ? (
         <NewPost

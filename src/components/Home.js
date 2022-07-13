@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { userLogin } from "../api";
 import { Link,useNavigate } from "react-router-dom";
 import handleLogout from "./LogOut"
-import {Profile} from "./Profile"
+
 
 
 
@@ -15,14 +15,12 @@ const Home = () => {
 
 
 
-
-  <button onClick={navigateProfile}>Home</button>
+ 
   const handleSubmit = async (event) => {
     try {
-      event.preventDefault();
+      event.preventDefault()
       const token = await userLogin(username, password);
       localStorage.setItem("token", token);
-      
       console.log(token);
     } catch (error) {
       console.log(error);
@@ -31,8 +29,8 @@ const Home = () => {
   return (
     <>
       {localStorage.getItem("token") ? 
-        <div>{`${username}`} is logged in 
-        
+        <div>Welcome!
+        <Link to="/home/posts">View Posts</Link>
         <button onClick={handleLogout}>Log Out</button>
         </div>
        : (

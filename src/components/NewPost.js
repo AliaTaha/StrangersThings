@@ -8,27 +8,33 @@ const NewPost = (props) => {
   const [price, setPrice] = useState("free");
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    try {
+      event.preventDefault();
 
-    const token = localStorage.getItem("token", token);
-
-    console.log(token, "in new post");
-
-    const newPost = {
-      title: title,
-
-      description: description,
-
-      price: price,
-    };
-
-    console.log(newPost, "new post in new post");
-
-    const freshPost = await newPost(token, newPost);
-
-    setAllPosts([...allPosts, freshPost]);
-
-    setNewPostFlag(false);
+      const token = localStorage.getItem("token",token);
+  
+      console.log(token, "in new post");
+  
+      const newPost = {
+        title: title,
+  
+        description: description,
+  
+        price: price,
+      };
+  
+      console.log(newPost, "new post in new post");
+  
+      const freshPost = await newPost(token, newPost);
+  
+      setAllPosts([...allPosts, freshPost]);
+  
+      setNewPostFlag(false);
+      
+    } catch (error) {
+      console.log(error)
+    }
+   
   };
 
   return (
@@ -50,7 +56,7 @@ const NewPost = (props) => {
         <input
           value={description}
           onChange={(event) => {
-            setDescripton(event.target.value);
+            setDescription(event.target.value);
           }}
         ></input>
 

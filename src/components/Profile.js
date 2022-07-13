@@ -8,7 +8,6 @@ const Profile = (props) => {
     token = localStorage.getItem("token");
     async function getMyInfo() {
       const myReturnedInfo = await getProfile(token);
-      console.log(myReturnedInfo, "returned info from api call");
       setMyInfo(myReturnedInfo);
     }
     getMyInfo();
@@ -42,7 +41,6 @@ const Profile = (props) => {
 
   return (
     <div className="box">
-      {`This is your Profile Component`}
       {myMessages}
     </div>
   );
